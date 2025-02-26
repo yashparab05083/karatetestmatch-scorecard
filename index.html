@@ -338,7 +338,7 @@ function downloadImage() {
             link.download = 'scoreboard.png';
             link.click();
         }).catch(error => console.error("Error capturing scoreboard:", error));
-    }, 200); // Small delay to ensure update is rendered
+    }, 50); // Small delay to ensure update is rendered
 }
 
 
