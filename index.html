@@ -1,1 +1,259 @@
-cac
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Editable Scoreboard</title>
+    <script src="https://html2canvas.hertzen.com/dist/html2canvas.min.js"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Oswald:wght@400;700&display=swap');
+
+        body {
+            font-family: 'Oswald', sans-serif;
+            background: url('background.jpg') no-repeat center center/cover;
+            text-align: center;
+            color: white;
+            padding: 20px;
+        }
+
+        .scoreboard-wrapper {
+            position: relative;
+            width: 100%;
+            height: 100%;
+        }
+
+        .background-image {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            object-fit: cover;
+        }
+
+        .scoreboard {
+            position: relative;
+        }
+
+
+        .scoreboard {
+            display: inline-block;
+            background: rgba(0, 0, 0, 0.8);
+            padding: 30px;
+            border-radius: 15px;
+            width: 80%;
+            max-width: 800px;
+            text-align: center;
+            box-shadow: 0px 0px 15px rgba(255, 255, 255, 0.3);
+        }
+
+        h1 {
+            color: #FFD700;
+            font-size: 36px;
+            margin-bottom: 10px;
+            display: inline-block;
+            background-color: white;
+            border-radius: 5px;
+            padding: 20px;
+        }
+
+        h2 {
+            font-size: 28px;
+            margin-bottom: 20px;
+        }
+
+        .teams {
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .team {
+            flex: 1;
+            text-align: center;
+        }
+
+        .team h3 {
+            font-size: 24px;
+            margin-bottom: 10px;
+            text-transform: uppercase;
+        }
+
+        .teamA h3 {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 8px;
+            margin: 5px 5px;
+            border-radius: 10px;
+            background: rgba(255, 255, 255, 0.2);
+            color: white;
+        }
+
+        .teamB h3 {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 8px;
+            margin: 5px 5px;
+            border-radius: 10px;
+            background: rgba(255, 255, 255, 0.2);
+            color: white;
+        }
+
+        .scorea {
+            display: flex;
+            font-size: 26px;
+            padding: 10px;
+            font-weight: bold;
+            background: rgb(232, 25, 25, 0.2);
+            padding: 5px 15px;
+            border-radius: 10px;
+            margin: 5px 5px;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .scoreb {
+            display: flex;
+            font-size: 26px;
+            padding: 10px;
+            font-weight: bold;
+            background: rgb(19, 221, 192, 0.2);
+            padding: 5px 15px;
+            border-radius: 10px;
+            margin: 5px 5px;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .playera {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: rgb(232, 25, 25, 0.2);
+            padding: 10px;
+            margin: 5px 5px;
+            border-radius: 10px;
+        }
+
+        .playerb {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: rgb(19, 221, 192, 0.2);
+            padding: 10px;
+            margin: 5px 5px;
+            border-radius: 10px;
+        }
+
+        input {
+            background: transparent;
+            border: none;
+            color: white;
+            font-size: 20px;
+            text-align: center;
+            font-weight: bold;
+            width: 100px;
+        }
+
+        .winner {
+            background: rgba(255, 255, 255, 0.2);
+            color: rgb(255, 255, 255);
+            padding: 5px;
+            font-size: 22px;
+            font-weight: bold;
+            border-radius: 10px;
+            width: 65%;
+            justify-content: center;
+            display: inline-block;
+        }
+
+        .winner input {
+            background: transparent;
+            border: none;
+            color: white;
+            font-size: 22px;
+            font-weight: bold;
+            text-align: center;
+            width: auto;
+            min-width: 100%;
+            overflow: visible;
+            white-space: nowrap;
+            padding: 0;
+        }
+
+
+        button {
+            margin-top: 20px;
+            padding: 12px 20px;
+            background: yellow;
+            border: none;
+            font-size: 18px;
+            font-weight: bold;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+
+        h1 img {
+            height: 100px;
+            margin: 0 10px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="scoreboard-wrapper" id="scoreboard">
+        <img src="background.jpg" class="background-image">
+        <div class="scoreboard-wrapper" id="scoreboard">
+
+
+            <div class="scoreboard" id="scoreboard">
+                <h1>
+                    <img src="aiskflogo.png" alt="AISKF LOGO">
+                    <img src="image (2).png" alt="AISKF">
+                    <img src="aiskfathelete.png" alt="AISKF ATHELETE LOGO">
+                </h1>
+
+                <h2>FRIENDSHIP TEST MATCHES</h2>
+
+                <div class="teams">
+                    <div class="team teamA">
+                        <h3>TEAM A</h3>
+                        <div class="scorea" id="teamA_score"><input type="number" value="15"></div>
+                        <div class="playera"><input type="text" value="AARAV"> <input type="number" value="15"></div>
+                        <div class="playera"><input type="text" value="MIVAAN"> <input type="number" value="74"></div>
+                        <div class="playera"><input type="text" value="OM"> <input type="number" value="56"></div>
+                        <div class="playera"><input type="text" value="KIAAN"> <input type="number" value="56"></div>
+                    </div>
+                    <div class="team teamB">
+                        <h3>TEAM B</h3>
+                        <div class="scoreb" id="teamB_score"><input type="number" value="15"></div>
+                        <div class="playerb"><input type="text" value="JASH"> <input type="number" value="15"></div>
+                        <div class="playerb"><input type="text" value="REYANSH"> <input type="number" value="41"></div>
+                        <div class="playerb"><input type="text" value="SARTH"> <input type="number" value="26"></div>
+                        <div class="playerb"><input type="text" value="SARTH"> <input type="number" value="26"></div>
+                    </div>
+                </div>
+                <div class="winner">
+                    <h3 id="winner_text"><input type="text" value="TEAM B WON BY 25 POINTS"></h3>
+                </div>
+            </div>
+        </div>
+    </div>
+        <br>
+        <button onclick="downloadImage()">Download Image</button>
+        <script>
+            function downloadImage() {
+                html2canvas(document.getElementById('scoreboard')).then(canvas => {
+                    let link = document.createElement('a');
+                    link.href = canvas.toDataURL("image/png");
+                    link.download = 'scoreboard.png';
+                    link.click();
+                });
+            }
+        </script>
+</body>
+
+</html>
