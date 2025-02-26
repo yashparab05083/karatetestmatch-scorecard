@@ -63,6 +63,7 @@
         h2 {
             font-size: 28px;
             margin-bottom: 20px;
+            color: #FFD700;
         }
 
         .teams {
@@ -221,6 +222,32 @@
             width: auto;
             height: 358px;
         }
+
+        .date {
+            color: #FFD700;
+            position: absolute;
+            top: 2px;
+            right: -21px;
+
+        }
+
+        .date input {
+            background: transparent;
+            border: none;
+            color: white;
+            font-size: 22px;
+            font-weight: bold;
+            text-align: center;
+            width: auto;
+            min-width: 100%;
+            overflow: visible;
+            white-space: nowrap;
+            padding: 0;
+        }
+
+        .date-input::-webkit-calendar-picker-indicator {
+            filter: invert(1);
+        }
     </style>
 </head>
 
@@ -232,12 +259,17 @@
             <img src="boy.png" class=" sideimage boyleft">
 
             <div class="scoreboard" id="scoreboard">
+                <div class="date">
+                    <label for="matchDate">Match Date:</label>
+                    <input type="date" id="matchDate" class="date-input" onchange="updateDate" />
+                </div>
+
                 <h1>
-                    <img src="boy.jpeg">
+
                     <img src="aiskflogo.png" alt="AISKF LOGO">
                     <img src="image (2).png" alt="AISKF">
                     <img src="aiskfathelete.png" alt="AISKF ATHELETE LOGO">
-                    <img src="girl.jpeg" alt="">
+
                 </h1>
 
                 <h2>FRIENDSHIP TEST MATCHES</h2>
@@ -283,53 +315,73 @@
     <br>
     <button onclick="downloadImage()">Download Image</button>
     <script>
-        function downloadImage() {
-            html2canvas(document.getElementById('scoreboard')).then(canvas => {
-                let link = document.createElement('a');
-                link.href = canvas.toDataURL("image/png");
-                link.download = 'scoreboard.png';
-                link.click();
-            });
-        }
+        function updateDate() {
+    let dateInput = document.getElementById("matchDate").value;
+    let dateDisplay = document.getElementById("dateDisplay");
+
+    if (dateInput) {
+        let dateParts = dateInput.split("-");
+        let formattedDate = dateParts[2] + "-" + dateParts[1] + "-" + dateParts[0]; // Convert to dd-mm-yyyy
+        dateDisplay.innerText = formattedDate; // Update the displayed date
+    }
+}
+
+function downloadImage() {
+    // Ensure date update is reflected in UI before capturing
+    setTimeout(() => {
+        html2canvas(document.getElementById('scoreboard'), {
+            scale: 2, // High quality
+            useCORS: true
+        }).then(canvas => {
+            let link = document.createElement('a');
+            link.href = canvas.toDataURL("image/png");
+            link.download = 'scoreboard.png';
+            link.click();
+        }).catch(error => console.error("Error capturing scoreboard:", error));
+    }, 200); // Small delay to ensure update is rendered
+}
+
+
+
         function updateScore(team) {
-        let total = 0;
-        document.querySelectorAll(`.${team} .playera input[type="number"], .${team} .playerb input[type="number"]`).forEach(input => {
-            total += Number(input.value) || 0;
-        });
-
-        // Update only the team's total score field
-        document.getElementById(`${team}_score`).querySelector("input").value = total;
-        
-        // Update the winner
-        updateWinner();
-    }
-
-    function updateWinner() {
-        let scoreA = Number(document.getElementById("teamA_score").querySelector("input").value) || 0;
-        let scoreB = Number(document.getElementById("teamB_score").querySelector("input").value) || 0;
-        let winnerText = document.getElementById("winner_text").querySelector("input");
-
-        if (scoreA > scoreB) {
-            winnerText.value = `TEAM A WON BY ${scoreA - scoreB} POINTS`;
-        } else if (scoreB > scoreA) {
-            winnerText.value = `TEAM B WON BY ${scoreB - scoreA} POINTS`;
-        } else {
-            winnerText.value = "MATCH DRAWN";
-        }
-    }
-
-    document.addEventListener("DOMContentLoaded", function () {
-        document.querySelectorAll(".playera input[type='number'], .playerb input[type='number']").forEach(input => {
-            input.addEventListener("input", function () {
-                let team = input.closest('.team').classList.contains('teamA') ? 'teamA' : 'teamB';
-                updateScore(team);
+            let total = 0;
+            document.querySelectorAll(`.${team} .playera input[type="number"], .${team} .playerb input[type="number"]`).forEach(input => {
+                total += Number(input.value) || 0;
             });
-        });
 
-        // Initial calculation
-        updateScore('teamA');
-        updateScore('teamB');
-    });
+            // Update only the team's total score field
+            document.getElementById(`${team}_score`).querySelector("input").value = total;
+
+            // Update the winner
+            updateWinner();
+        }
+
+        function updateWinner() {
+            let scoreA = Number(document.getElementById("teamA_score").querySelector("input").value) || 0;
+            let scoreB = Number(document.getElementById("teamB_score").querySelector("input").value) || 0;
+            let winnerText = document.getElementById("winner_text").querySelector("input");
+
+            if (scoreA > scoreB) {
+                winnerText.value = `TEAM A WON BY ${scoreA - scoreB} POINTS`;
+            } else if (scoreB > scoreA) {
+                winnerText.value = `TEAM B WON BY ${scoreB - scoreA} POINTS`;
+            } else {
+                winnerText.value = "MATCH DRAWN";
+            }
+        }
+
+        document.addEventListener("DOMContentLoaded", function () {
+            document.querySelectorAll(".playera input[type='number'], .playerb input[type='number']").forEach(input => {
+                input.addEventListener("input", function () {
+                    let team = input.closest('.team').classList.contains('teamA') ? 'teamA' : 'teamB';
+                    updateScore(team);
+                });
+            });
+
+            // Initial calculation
+            updateScore('teamA');
+            updateScore('teamB');
+        });
     </script>
 </body>
 
