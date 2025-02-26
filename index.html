@@ -21,6 +21,7 @@
             position: relative;
             width: 100%;
             height: 100%;
+
         }
 
         .background-image {
@@ -200,6 +201,26 @@
             height: 100px;
             margin: 0 10px;
         }
+
+        .sideimage {
+            width: 100px;
+            /* Adjust as needed */
+            height: auto;
+
+            align-items: center;
+        }
+
+        .boyleft {
+            margin-right: 10px;
+            width: auto;
+            height: 346px;
+        }
+
+        .girlright {
+            margin-left: -60px;
+            width: auto;
+            height: 358px;
+        }
     </style>
 </head>
 
@@ -208,12 +229,15 @@
         <img src="background.jpg" class="background-image">
         <div class="scoreboard-wrapper" id="scoreboard">
 
+            <img src="boy.png" class=" sideimage boyleft">
 
             <div class="scoreboard" id="scoreboard">
                 <h1>
+                    <img src="boy.jpeg">
                     <img src="aiskflogo.png" alt="AISKF LOGO">
                     <img src="image (2).png" alt="AISKF">
                     <img src="aiskfathelete.png" alt="AISKF ATHELETE LOGO">
+                    <img src="girl.jpeg" alt="">
                 </h1>
 
                 <h2>FRIENDSHIP TEST MATCHES</h2>
@@ -226,6 +250,11 @@
                         <div class="playera"><input type="text" value="MIVAAN"> <input type="number" value="74"></div>
                         <div class="playera"><input type="text" value="OM"> <input type="number" value="56"></div>
                         <div class="playera"><input type="text" value="KIAAN"> <input type="number" value="56"></div>
+                        <div class="playera"><input type="text" value="KIAAN"> <input type="number" value="56"></div>
+                        <div class="playera"><input type="text" value="KIAAN"> <input type="number" value="56"></div>
+                        <div class="playera"><input type="text" value="KIAAN"> <input type="number" value="56"></div>
+                        <div class="playera"><input type="text" value="KIAAN"> <input type="number" value="56"></div>
+                        <div class="playera"><input type="text" value="KIAAN"> <input type="number" value="56"></div>
                     </div>
                     <div class="team teamB">
                         <h3>TEAM B</h3>
@@ -234,26 +263,74 @@
                         <div class="playerb"><input type="text" value="REYANSH"> <input type="number" value="41"></div>
                         <div class="playerb"><input type="text" value="SARTH"> <input type="number" value="26"></div>
                         <div class="playerb"><input type="text" value="SARTH"> <input type="number" value="26"></div>
+                        <div class="playerb"><input type="text" value="SARTH"> <input type="number" value="26"></div>
+                        <div class="playerb"><input type="text" value="SARTH"> <input type="number" value="26"></div>
+                        <div class="playerb"><input type="text" value="SARTH"> <input type="number" value="26"></div>
+                        <div class="playerb"><input type="text" value="SARTH"> <input type="number" value="26"></div>
+                        <div class="playerb"><input type="text" value="SARTH"> <input type="number" value="26"></div>
                     </div>
                 </div>
+
                 <div class="winner">
                     <h3 id="winner_text"><input type="text" value="TEAM B WON BY 25 POINTS"></h3>
                 </div>
             </div>
+            <img src="girl.png" class="side image girlright">
         </div>
+
     </div>
-        <br>
-        <button onclick="downloadImage()">Download Image</button>
-        <script>
-            function downloadImage() {
-                html2canvas(document.getElementById('scoreboard')).then(canvas => {
-                    let link = document.createElement('a');
-                    link.href = canvas.toDataURL("image/png");
-                    link.download = 'scoreboard.png';
-                    link.click();
-                });
-            }
-        </script>
+
+    <br>
+    <button onclick="downloadImage()">Download Image</button>
+    <script>
+        function downloadImage() {
+            html2canvas(document.getElementById('scoreboard')).then(canvas => {
+                let link = document.createElement('a');
+                link.href = canvas.toDataURL("image/png");
+                link.download = 'scoreboard.png';
+                link.click();
+            });
+        }
+        function updateScore(team) {
+        let total = 0;
+        document.querySelectorAll(`.${team} .playera input[type="number"], .${team} .playerb input[type="number"]`).forEach(input => {
+            total += Number(input.value) || 0;
+        });
+
+        // Update only the team's total score field
+        document.getElementById(`${team}_score`).querySelector("input").value = total;
+        
+        // Update the winner
+        updateWinner();
+    }
+
+    function updateWinner() {
+        let scoreA = Number(document.getElementById("teamA_score").querySelector("input").value) || 0;
+        let scoreB = Number(document.getElementById("teamB_score").querySelector("input").value) || 0;
+        let winnerText = document.getElementById("winner_text").querySelector("input");
+
+        if (scoreA > scoreB) {
+            winnerText.value = `TEAM A WON BY ${scoreA - scoreB} POINTS`;
+        } else if (scoreB > scoreA) {
+            winnerText.value = `TEAM B WON BY ${scoreB - scoreA} POINTS`;
+        } else {
+            winnerText.value = "MATCH DRAWN";
+        }
+    }
+
+    document.addEventListener("DOMContentLoaded", function () {
+        document.querySelectorAll(".playera input[type='number'], .playerb input[type='number']").forEach(input => {
+            input.addEventListener("input", function () {
+                let team = input.closest('.team').classList.contains('teamA') ? 'teamA' : 'teamB';
+                updateScore(team);
+            });
+        });
+
+        // Initial calculation
+        updateScore('teamA');
+        updateScore('teamB');
+    });
+    </script>
 </body>
 
 </html>
