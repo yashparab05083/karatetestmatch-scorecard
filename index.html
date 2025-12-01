@@ -248,6 +248,25 @@
         .date-input::-webkit-calendar-picker-indicator {
             filter: invert(1);
         }
+
+        .nameInput {
+            font-weight: normal;
+        }
+
+        .nameInput.filled {
+            font-weight: bold;
+        }
+
+        .teamName {
+            background: transparent;
+            border: none;
+            color: white;
+            font-size: 24px;
+            text-transform: uppercase;
+            text-align: center;
+            font-weight: bold;
+            width: 150px;
+        }
     </style>
 </head>
 
@@ -259,47 +278,67 @@
             <img src="boy.png" class=" sideimage boyleft">
 
             <div class="scoreboard" id="scoreboard">
-                <div class="date">
+                <!-- <div class="date">
                     <label for="matchDate">Match Date:</label>
                     <input type="date" id="matchDate" class="date-input" onchange="updateDate" />
-                </div>
+                </div> -->
 
                 <h1>
 
                     <img src="aiskflogo.png" alt="AISKF LOGO">
-                    <img src="image (2).png" alt="AISKF">
+                    <img src="zenkaido-logo.png" alt="">
+                    <!-- <img src="image (2).png" alt="AISKF"> -->
                     <img src="aiskfathelete.png" alt="AISKF ATHELETE LOGO">
 
                 </h1>
 
-                <h2>FRIENDSHIP TEST MATCHES</h2>
+
 
                 <div class="teams">
                     <div class="team teamA">
-                        <h3>TEAM A</h3>
-                        <div class="scorea" id="teamA_score"><input type="number" value="15"></div>
-                        <div class="playera"><input type="text" value="AARAV"> <input type="number" value="15"></div>
-                        <div class="playera"><input type="text" value="MIVAAN"> <input type="number" value="74"></div>
-                        <div class="playera"><input type="text" value="OM"> <input type="number" value="56"></div>
-                        <div class="playera"><input type="text" value="KIAAN"> <input type="number" value="56"></div>
-                        <div class="playera"><input type="text" value="KIAAN"> <input type="number" value="56"></div>
-                        <div class="playera"><input type="text" value="KIAAN"> <input type="number" value="56"></div>
-                        <div class="playera"><input type="text" value="KIAAN"> <input type="number" value="56"></div>
-                        <div class="playera"><input type="text" value="KIAAN"> <input type="number" value="56"></div>
-                        <div class="playera"><input type="text" value="KIAAN"> <input type="number" value="56"></div>
+                        <h3><input type="text" value="TEAM A" class="teamName"></h3>
+                        <div class="scorea" id="teamA_score"><input type="number" value="0"></div>
+                        <div class="playera"><input type="text" value="Name" class="nameInput"> <input type="number"
+                                value="0"></div>
+                        <div class="playera"><input type="text" value="Name" class="nameInput"> <input type="number"
+                                value="0"></div>
+                        <div class="playera"><input type="text" value="Name" class="nameInput"> <input type="number"
+                                value="0"></div>
+                        <div class="playera"><input type="text" value="Name" class="nameInput"> <input type="number"
+                                value="0"></div>
+                        <div class="playera"><input type="text" value="Name" class="nameInput"> <input type="number"
+                                value="0"></div>
+                        <div class="playera"><input type="text" value="Name" class="nameInput"> <input type="number"
+                                value="0"></div>
+                        <div class="playera"><input type="text" value="Name" class="nameInput"> <input type="number"
+                                value="0"></div>
+                        <div class="playera"><input type="text" value="Name" class="nameInput"> <input type="number"
+                                value="0"></div>
+                        <div class="playera"><input type="text" value="Name" class="nameInput"> <input type="number"
+                                value="0"></div>
+
                     </div>
                     <div class="team teamB">
-                        <h3>TEAM B</h3>
-                        <div class="scoreb" id="teamB_score"><input type="number" value="15"></div>
-                        <div class="playerb"><input type="text" value="JASH"> <input type="number" value="15"></div>
-                        <div class="playerb"><input type="text" value="REYANSH"> <input type="number" value="41"></div>
-                        <div class="playerb"><input type="text" value="SARTH"> <input type="number" value="26"></div>
-                        <div class="playerb"><input type="text" value="SARTH"> <input type="number" value="26"></div>
-                        <div class="playerb"><input type="text" value="SARTH"> <input type="number" value="26"></div>
-                        <div class="playerb"><input type="text" value="SARTH"> <input type="number" value="26"></div>
-                        <div class="playerb"><input type="text" value="SARTH"> <input type="number" value="26"></div>
-                        <div class="playerb"><input type="text" value="SARTH"> <input type="number" value="26"></div>
-                        <div class="playerb"><input type="text" value="SARTH"> <input type="number" value="26"></div>
+                        <h3><input type="text" value="TEAM B" class="teamName"></h3>
+                        <div class="scoreb" id="teamB_score"><input type="number" value="0"></div>
+                        <div class="playerb"><input type="text" value="Name" class="nameInput"> <input type="number"
+                                value="0"></div>
+                        <div class="playerb"><input type="text" value="Name" class="nameInput"> <input type="number"
+                                value="0"></div>
+                        <div class="playerb"><input type="text" value="Name" class="nameInput"> <input type="number"
+                                value="0"></div>
+                        <div class="playerb"><input type="text" value="Name" class="nameInput"> <input type="number"
+                                value="0"></div>
+                        <div class="playerb"><input type="text" value="Name" class="nameInput"> <input type="number"
+                                value="0"></div>
+                        <div class="playerb"><input type="text" value="Name" class="nameInput"> <input type="number"
+                                value="0"></div>
+                        <div class="playerb"><input type="text" value="Name" class="nameInput"> <input type="number"
+                                value="0"></div>
+                        <div class="playerb"><input type="text" value="Name" class="nameInput"> <input type="number"
+                                value="0"></div>
+                        <div class="playerb"><input type="text" value="Name" class="nameInput"> <input type="number"
+                                value="0"></div>
                     </div>
                 </div>
 
@@ -316,30 +355,39 @@
     <button onclick="downloadImage()">Download Image</button>
     <script>
         function updateDate() {
-    let dateInput = document.getElementById("matchDate").value;
-    let dateDisplay = document.getElementById("dateDisplay");
+            let dateInput = document.getElementById("matchDate").value;
+            let dateDisplay = document.getElementById("dateDisplay");
 
-    if (dateInput) {
-        let dateParts = dateInput.split("-");
-        let formattedDate = dateParts[2] + "-" + dateParts[1] + "-" + dateParts[0]; // Convert to dd-mm-yyyy
-        dateDisplay.innerText = formattedDate; // Update the displayed date
-    }
-}
+            if (dateInput) {
+                let dateParts = dateInput.split("-");
+                let formattedDate = dateParts[2] + "-" + dateParts[1] + "-" + dateParts[0]; // Convert to dd-mm-yyyy
+                dateDisplay.innerText = formattedDate; // Update the displayed date
+            }
+        }
 
-function downloadImage() {
-    // Ensure date update is reflected in UI before capturing
-    setTimeout(() => {
-        html2canvas(document.getElementById('scoreboard'), {
-            scale: 2, // High quality
-            useCORS: true
-        }).then(canvas => {
-            let link = document.createElement('a');
-            link.href = canvas.toDataURL("image/png");
-            link.download = 'scoreboard.png';
-            link.click();
-        }).catch(error => console.error("Error capturing scoreboard:", error));
-    }, 50); // Small delay to ensure update is rendered
-}
+        function downloadImage() {
+            // Ensure date update is reflected in UI before capturing
+            setTimeout(() => {
+                html2canvas(document.getElementById('scoreboard'), {
+                    scale: 2, // High quality
+                    useCORS: true
+                }).then(canvas => {
+                    let link = document.createElement('a');
+                    link.href = canvas.toDataURL("image/png");
+                    link.download = 'scoreboard.png';
+                    link.click();
+                }).catch(error => console.error("Error capturing scoreboard:", error));
+            }, 200); // Small delay to ensure update is rendered
+        }
+        document.querySelectorAll(".nameInput").forEach(input => {
+            input.addEventListener("input", function () {
+                if (input.value.trim() !== "" && input.value !== "Name") {
+                    input.classList.add("filled");
+                } else {
+                    input.classList.remove("filled");
+                }
+            });
+        });
 
 
 
