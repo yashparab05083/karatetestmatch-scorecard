@@ -404,19 +404,19 @@
             updateWinner();
         }
 
-        function updateWinner() {
-            let scoreA = Number(document.getElementById("teamA_score").querySelector("input").value) || 0;
-            let scoreB = Number(document.getElementById("teamB_score").querySelector("input").value) || 0;
-            let winnerText = document.getElementById("winner_text").querySelector("input");
+        // function updateWinner() {
+        //     let scoreA = Number(document.getElementById("teamA_score").querySelector("input").value) || 0;
+        //     let scoreB = Number(document.getElementById("teamB_score").querySelector("input").value) || 0;
+        //     let winnerText = document.getElementById("winner_text").querySelector("input");
 
-            if (scoreA > scoreB) {
-                winnerText.value = `TEAM A WON BY ${scoreA - scoreB} POINTS`;
-            } else if (scoreB > scoreA) {
-                winnerText.value = `TEAM B WON BY ${scoreB - scoreA} POINTS`;
-            } else {
-                winnerText.value = "MATCH DRAWN";
-            }
-        }
+        //     if (scoreA > scoreB) {
+        //         winnerText.value = `TEAM A WON BY ${scoreA - scoreB} POINTS`;
+        //     } else if (scoreB > scoreA) {
+        //         winnerText.value = `TEAM B WON BY ${scoreB - scoreA} POINTS`;
+        //     } else {
+        //         winnerText.value = "MATCH DRAWN";
+        //     }
+        // }
 
         document.addEventListener("DOMContentLoaded", function () {
             document.querySelectorAll(".playera input[type='number'], .playerb input[type='number']").forEach(input => {
@@ -434,4 +434,5 @@
 </body>
 
 </html>
+
 
